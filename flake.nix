@@ -10,12 +10,12 @@
       channelsConfig.allowUnfree = true;
 
       sharedOverlays = [(final: prev: {
-        qtermtcp =  prev.libsForQt5.callPackage ./pkgs/qtermtcp.nix {};
+        qttermtcp =  prev.libsForQt5.callPackage ./pkgs/qttermtcp.nix {};
       })];
 
       outputsBuilder = channels: {
         packages = {
-          inherit (channels.nixpkgs) qtermtcp;
+          inherit (channels.nixpkgs) qttermtcp;
         };
       };
     };
