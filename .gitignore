@@ -1,3 +1,6 @@
+# Added for lasandell/nixpkgs-radio
+QtTermTCP.ini
+
 # Copied from NixOS/nixpkgs
 *~
 ,*
