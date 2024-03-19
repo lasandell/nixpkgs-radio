@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-23.11";
     fup.url = "github:gytis-ivaskevicius/flake-utils-plus";
   };
   outputs = { self, fup, ... }@inputs:
@@ -9,14 +9,14 @@
 
       channelsConfig.allowUnfree = true;
 
-      sharedOverlays = [(final: prev: {
-        qttermtcp =  prev.libsForQt5.callPackage ./pkgs/qttermtcp.nix {};
-      })];
+      sharedOverlays = [ self.overlays.default ];
+
+      overlays = {
+        default = import ./overlays;
+      };
 
       outputsBuilder = channels: {
-        packages = {
-          inherit (channels.nixpkgs) qttermtcp;
-        };
+        packages = fup.lib.exportPackages self.overlays channels;
       };
     };
 }
