@@ -13,10 +13,11 @@
 
       overlays = {
         default = import ./overlays;
+        sdrplay = import ./overlays/sdrplay.nix;
       };
 
       outputsBuilder = channels: {
-        packages = fup.lib.exportPackages self.overlays channels;
+        packages = fup.lib.exportPackages { inherit (self.overlays) default; } channels;
       };
     };
 }
