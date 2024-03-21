@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/release-23.11";
     fup.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    flake-compat.url = "github:edolstra/flake-compat";
   };
   outputs = { self, fup, ... }@inputs:
     fup.lib.mkFlake {
