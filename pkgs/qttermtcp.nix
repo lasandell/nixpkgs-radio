@@ -25,5 +25,6 @@ stdenv.mkDerivation rec {
     homepage = "https://www.cantab.net/users/john.wiseman/Documents/QtTermTCP.html";
     license = licenses.unfree;
     platforms = platforms.linux;
+    mainProgram = "QtTermTCP";
   };
 }

@@ -34,5 +34,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/SDRplay/dump1090";
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
+    mainProgram = "dump1090";
   };
 }
