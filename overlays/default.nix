@@ -6,4 +6,5 @@ final: prev: {
     libacars =  prev.callPackage ../pkgs/libacars.nix {};
     qttermtcp =  prev.libsForQt5.callPackage ../pkgs/qttermtcp.nix {};
     sdrconnect = prev.callPackage ../pkgs/sdrconnect.nix {};
+    sdrplay2 =  prev.callPackage ../pkgs/sdrplay2.nix {};
 }
