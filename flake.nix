@@ -15,6 +15,7 @@
       overlays = {
         default = import ./overlays;
         sdrplay = import ./overlays/sdrplay.nix;
+        sdrplay2 = import ./overlays/sdrplay2.nix;
       };
 
       outputsBuilder = channels: {
