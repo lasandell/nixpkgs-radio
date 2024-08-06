@@ -1,5 +1,6 @@
 final: prev: {
     acarsdec =  prev.callPackage ../pkgs/acarsdec.nix {};
+    ax25-apps-ve7fet =  prev.callPackage ../pkgs/ax25-apps-ve7fet.nix {};
     ax25-tools-ve7fet =  prev.callPackage ../pkgs/ax25-tools-ve7fet.nix {};
     cqrprop = prev.callPackage ../pkgs/cqrprop.nix {};
     dump1090-sdrplay = prev.callPackage ../pkgs/dump1090-sdrplay.nix {};
