@@ -1,16 +1,5 @@
-{ lib, stdenv, fetchurl, makeDesktopItem, alsaLib, fontconfig, gcc, icu, libusb1, util-linux, xorg }:
-
-let
-  desktopItem = makeDesktopItem {
-    name = "sdrconnect";
-    desktopName = "SDRconnect";
-    comment = "SDRplay's SDRconnect";
-    icon = "sdrconnect";
-    exec = "SDRconnect";
-    categories = [ "X-SDR" ];
-    startupNotify = true;
-  };
-in
+{ lib, stdenv, fetchurl, alsaLib, copyDesktopItems, iconConvTools, fontconfig,
+  gcc, icu, libusb1, makeDesktopItem, util-linux, xorg }:
 
 stdenv.mkDerivation rec {
   pname = "sdrconnect";
@@ -20,6 +9,8 @@ stdenv.mkDerivation rec {
     url = "https://www.sdrplay.com/software/SDRconnect_linux-x64_f795c3df0.run";
     hash = "sha256-KRs4zZxE5SzxjAqcmMJDuXTnRM0fpKfeth0aFanRxI0==";
   };
+
+  nativeBuildInputs = [ copyDesktopItems iconConvTools ];
 
   # Only used to set rpath with patchelf
   buildInputs = [
@@ -40,12 +31,11 @@ stdenv.mkDerivation rec {
     bash $src --target . --noexec
   '';
 
-  installPhase = ''
-    mkdir -p $out/bin $out/lib $out/share/icons/hicolor/128x128/apps/ $out/share/applications
+  postInstall = ''
+    mkdir -p $out/bin $out/lib
     cp SDRconnect $out/bin
     cp *.so $out/lib
-    cp sdrconnect.ico $out/share/icons/hicolor/128x128/apps
-    ln -s ${desktopItem}/share/applications/sdrconnect.desktop $out/share/applications
+    icoFileToHiColorTheme sdrconnect.ico sdrconnect $out
   '';
 
   postFixup = ''
@@ -54,6 +44,19 @@ stdenv.mkDerivation rec {
       patchelf --set-rpath "$out/lib:${lib.makeLibraryPath buildInputs}" $file
     done
   '';
+
+  desktopItems = [
+    (makeDesktopItem {
+      name = pname;
+      icon = pname;
+      exec = meta.mainProgram;
+      comment = meta.description;
+      desktopName = "SDRconnect";
+      genericName = "SDRplay Client";
+      categories = [ "HamRadio" ];
+      keywords = [ "Ham" "Radio" "SDR" ];
+    })
+  ];
 
   meta = with lib; {
     description = "Cross platform GUI client for SDRplay";
