@@ -1,13 +1,33 @@
 { lib, stdenv, fetchurl, alsaLib, copyDesktopItems, iconConvTools, fontconfig,
   gcc, icu, libusb1, makeDesktopItem, util-linux, xorg }:
 
+let
+  date = "2024-05-24";
+  hash = "f795c3df0";
+
+  platforms = {
+    aarch64-linux = {
+      arch = "arm64";
+      sha256 = "sha256-J/WJpVne11j4JIZlSzMeMA6CdaN7qpWKhKhjmIlrcGk=";
+    };
+    x86_64-linux = {
+      arch = "x64";
+      sha256 = "sha256-KRs4zZxE5SzxjAqcmMJDuXTnRM0fpKfeth0aFanRxI0==";
+    };
+  };
+
+  inherit (stdenv.hostPlatform) system;
+in
+
+with platforms.${system} or (throw "Unsupported system: ${system}");
+
 stdenv.mkDerivation rec {
   pname = "sdrconnect";
-  version = "unstable-2024-05-24";
+  version = "unstable-${date}";
 
   src = fetchurl {
-    url = "https://www.sdrplay.com/software/SDRconnect_linux-x64_f795c3df0.run";
-    hash = "sha256-KRs4zZxE5SzxjAqcmMJDuXTnRM0fpKfeth0aFanRxI0==";
+    url = "https://www.sdrplay.com/software/SDRconnect_linux-${arch}_${hash}.run";
+    inherit sha256;
   };
 
   nativeBuildInputs = [ copyDesktopItems iconConvTools ];
@@ -45,12 +65,12 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  desktopItems = [
+  desktopItems = with meta; [
     (makeDesktopItem {
       name = pname;
       icon = pname;
-      exec = meta.mainProgram;
-      comment = meta.description;
+      exec = mainProgram;
+      comment = description;
       desktopName = "SDRconnect";
       genericName = "SDRplay Client";
       categories = [ "HamRadio" ];
@@ -61,9 +81,9 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Cross platform GUI client for SDRplay";
     homepage = "https://www.sdrplay.com/sdrconnect/";
+    sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
-    platforms = ["x86_64-linux"];
+    platforms = attrNames platforms;
     mainProgram = "SDRconnect";
   };
 }
-
