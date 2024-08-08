@@ -36,6 +36,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/szpajder/dumphfdl";
     changelog = "https://github.com/szpajder/dumphfdl/blob/master/CHANGELOG.md";
     license = licenses.gpl3Only;
+    platforms = platforms.linux;
     mainProgram = "dumphfdl";
   };
 }
