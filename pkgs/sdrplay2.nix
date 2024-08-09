@@ -1,35 +1,34 @@
 { stdenv, lib, fetchurl, autoPatchelfHook, libudev-zero }:
 
 let
-  arch =
-    if stdenv.isx86_64 then "x86_64"
-    else if stdenv.isi686 then "i686"
-    else if stdenv.isAarch64 then "aarch64"
-    else throw "unsupported architecture";
-
   version = "2.13.1";
 
-  srcs = rec {
-    aarch64 = {
-      url = "https://www.sdrplay.com/software/SDRplay_RSP_API-ARM64-${version}.run";
-      hash = "sha256-AhCU9GGsyi62ZkvWJa/H2qFM17zeT+q0h9XbIAa8T3s=";
+  platforms = {
+    aarch64-linux = {
+      arch = "ARM64";
+      archDir = ".";
+      sha256 = "sha256-AhCU9GGsyi62ZkvWJa/H2qFM17zeT+q0h9XbIAa8T3s=";
     };
-
-    x86_64 = {
-      url = "https://www.sdrplay.com/software/SDRplay_RSP_API-Linux-${version}.run";
-      sha256 = "08j56rmvk3ycpsdgvhdci84wy72jy9x20mp995fwp8zzmyg0ncp2";
+    x86_64-linux = {
+      arch = "Linux";
+      archDir = "x86_64";
+      sha256 = "sha256-4jILnq//o8tdSelWIHryUhzPCYqswf2avsyPuWs2RSI=";
     };
-
-    i686 = x86_64;
   };
 
-  archDir = if stdenv.isAarch64 then "." else arch;
+  inherit (stdenv.hostPlatform) system;
 in
+
+with platforms.${system} or (throw "Unsupported system: ${system}");
+
 stdenv.mkDerivation {
   pname = "libsdrplay";
   inherit version;
 
-  src = fetchurl srcs."${arch}";
+  src = fetchurl {
+    url = "https://www.sdrplay.com/software/SDRplay_RSP_API-${arch}-${version}.run";
+    inherit sha256;
+  };
 
   nativeBuildInputs = [ autoPatchelfHook ];
 
@@ -62,6 +61,6 @@ stdenv.mkDerivation {
     homepage = "https://www.sdrplay.com/downloads/";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
-    platforms = [ "x86_64-linux" "i686-linux" "aarch64-linux" ];
+    platforms = attrNames platforms;
   };
 }
