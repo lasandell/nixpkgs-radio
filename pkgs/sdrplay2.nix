@@ -43,12 +43,12 @@ stdenv.mkDerivation {
     major=`echo "$version" | cut -d. -f1`
     minor=`echo "$version" | cut -d. -f2`
     libFile="$libName.so.$major.$minor"
-    mkdir -p "$out/lib" "$out/include" "$out/etc/udev/rules.d"
+    mkdir -p "$out/lib" "$out/include" "$out/lib/udev/rules.d"
     cp "${archDir}/$lib.so.$major.$minor" "$out/lib"
     ln -s "$out/lib/$lib.so.$major.$minor" "$out/lib/$lib.so.$major"
     ln -s "$out/lib/$lib.so.$major" "$out/lib/$lib.so"
     cp *.h "$out/include"
-    cp *.rules "$out/etc/udev/rules.d"
+    cp *.rules "$out/lib/udev/rules.d"
   '';
 
   meta = with lib; {

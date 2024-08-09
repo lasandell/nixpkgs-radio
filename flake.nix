@@ -8,18 +8,23 @@
     fup.lib.mkFlake {
       inherit self inputs;
 
+      supportedSystems = [ "aarch64-linux" "x86_64-linux" ];
+
       channelsConfig.allowUnfree = true;
 
       sharedOverlays = [ self.overlays.default ];
 
-      overlays = {
-        default = import ./overlays;
-        sdrplay = import ./overlays/sdrplay.nix;
-        sdrplay2 = import ./overlays/sdrplay2.nix;
+      overlays.default = import ./overlays;
+
+      nixosModules = {
+        sdrplay = import ./nixosModules/sdrplay.nix;
+        sdrplay2 = import ./nixosModules/sdrplay2.nix;
       };
 
       outputsBuilder = channels: {
         packages = fup.lib.exportPackages { inherit (self.overlays) default; } channels;
+
+        devShells.default = import ./devShells (channels.nixpkgs);
       };
     };
 }
