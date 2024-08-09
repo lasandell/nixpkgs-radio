@@ -1,5 +1,5 @@
-{ stdenv, lib, fetchFromGitHub, atk, cairo, fpc, gdk-pixbuf, glib, gtk2,
-  lazarus, openssl, pango, patchelf, xorg }:
+{ stdenv, lib, fetchFromGitHub, atk, autoPatchelfHook, cairo, fpc,
+  gdk-pixbuf, glib, gtk2, lazarus, openssl, pango, patchelf, xorg }:
 
 stdenv.mkDerivation rec {
   pname = "cqrprop";
@@ -12,9 +12,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-yG2BTaz51fK1rp0Pu/BpoTqB5IO0U9QtTL3N1WgCHI8=";
   };
 
-  nativeBuildInputs = [ fpc lazarus ];
+  nativeBuildInputs = [ autoPatchelfHook fpc lazarus ];
 
-  buildInputs = [ atk cairo gdk-pixbuf glib gtk2 openssl pango xorg.libX11 ];
+  buildInputs = [ atk cairo gdk-pixbuf glib gtk2 pango xorg.libX11 ];
+
+  runtimeDependencies = [ openssl.out ];
 
   makeFlags = [ "DESTDIR=$(out)" ];
 
@@ -28,11 +30,6 @@ stdenv.mkDerivation rec {
       --replace-fail 'http://www.hamqsl.com/solar2.php' 'https://www.hamqsl.com/solar2.php'
     substituteInPlace src/fOptions.pas \
       --replace-fail 'http://www.hamqsl.com/solar2.php' 'https://www.hamqsl.com/solar2.php'
-  '';
-
-  postFixup = ''
-    # Add libraries including dynamically loaded openssl
-    patchelf --set-rpath "${lib.makeLibraryPath buildInputs}" $out/bin/cqrprop
   '';
 
   meta = with lib; {
