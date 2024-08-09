@@ -1,5 +1,5 @@
-{ lib, stdenv, fetchurl, alsaLib, copyDesktopItems, iconConvTools, fontconfig,
-  gcc, icu, libusb1, makeDesktopItem, util-linux, xorg }:
+{ lib, stdenv, fetchurl, alsaLib, autoPatchelfHook, copyDesktopItems, iconConvTools,
+  fontconfig, gcc, icu, libusb1, makeDesktopItem, util-linux, xorg }:
 
 let
   date = "2024-05-24";
@@ -30,22 +30,24 @@ stdenv.mkDerivation rec {
     inherit sha256;
   };
 
-  nativeBuildInputs = [ copyDesktopItems iconConvTools ];
+  nativeBuildInputs = [ autoPatchelfHook copyDesktopItems iconConvTools ];
 
-  # Only used to set rpath with patchelf
   buildInputs = [
-    # elf dependencies
     alsaLib
     fontconfig
     libusb1
     util-linux # for libuuid
     gcc.cc.lib # for libstdc++
-    # dlopen dependencies
+  ];
+
+  runtimeDependencies = [
     icu
     xorg.libX11
     xorg.libICE
     xorg.libSM
   ];
+
+  appendRunpaths = [ "${placeholder "out"}/lib" ];
 
   unpackPhase = ''
     bash $src --target . --noexec
@@ -56,13 +58,6 @@ stdenv.mkDerivation rec {
     cp SDRconnect $out/bin
     cp *.so $out/lib
     icoFileToHiColorTheme sdrconnect.ico sdrconnect $out
-  '';
-
-  postFixup = ''
-    patchelf --set-interpreter $(cat $NIX_CC/nix-support/dynamic-linker) $out/bin/SDRconnect
-    for file in $out/{bin,lib}/*; do
-      patchelf --set-rpath "$out/lib:${lib.makeLibraryPath buildInputs}" $file
-    done
   '';
 
   desktopItems = with meta; [
