@@ -18,8 +18,22 @@
         sdrplay2 = import ./overlays/sdrplay2.nix;
       };
 
-      outputsBuilder = channels: {
-        packages = fup.lib.exportPackages { inherit (self.overlays) default; } channels;
-      };
+      outputsBuilder = channels: 
+        let
+          inherit (channels.nixpkgs) lib pkgs;
+        in {
+          packages = fup.lib.exportPackages { inherit (self.overlays) default; } channels;
+
+          devShells.default = pkgs.mkShell {
+            shellHook = ''
+              SOAPY_SDR_PLUGIN_PATH=${
+                lib.makeSearchPath 
+                  pkgs.soapysdr.passthru.searchPath 
+                  (with pkgs; [
+                    soapysdrplay2
+                  ])}
+            '';
+          };
+        };
     };
 }
