@@ -15,6 +15,14 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ sdrplay2 soapysdr ];
 
+  postPatch = ''
+    substituteInPlace Registration.cpp \
+      --replace-fail \"sdrplay \"sdrplay2 \
+      --replace-fail \"SDRplay \"SDRplay2
+    substituteInPlace Settings.cpp \
+      --replace-fail \"SDRplay \"SDRplay2
+  '';
+
   cmakeFlags = [
     "-DSoapySDR_DIR=${soapysdr}/share/cmake/SoapySDR/"
   ];
