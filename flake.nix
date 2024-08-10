@@ -26,6 +26,7 @@
         packages = fup.lib.exportPackages { inherit (self.overlays) default; } channels;
 
         devShells = {
+          mirisdr = import ./devShells/mirisdr.nix channels.nixpkgs;
           sdrplay2 = import ./devShells/sdrplay2.nix channels.nixpkgs;
         };
       };
