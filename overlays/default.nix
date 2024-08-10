@@ -8,6 +8,7 @@ final: prev: {
     dumphfdl = prev.callPackage ../pkgs/dumphfdl.nix {};
     libacars =  prev.callPackage ../pkgs/libacars.nix {};
     libax25-ve7fet =  prev.callPackage ../pkgs/libax25-ve7fet.nix {};
+    libmirisdr5 = prev.callPackage ../pkgs/libmirisdr5.nix {};
     qttermtcp =  prev.libsForQt5.callPackage ../pkgs/qttermtcp.nix {};
     sdrconnect = prev.callPackage ../pkgs/sdrconnect.nix {};
     sdrplay2 =  prev.callPackage ../pkgs/sdrplay2.nix {};
