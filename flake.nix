@@ -17,6 +17,7 @@
       overlays.default = import ./overlays;
 
       nixosModules = {
+        mirisdr = import ./nixosModules/mirisdr.nix;
         sdrplay = import ./nixosModules/sdrplay.nix;
         sdrplay2 = import ./nixosModules/sdrplay2.nix;
       };
