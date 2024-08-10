@@ -12,5 +12,6 @@ final: prev: {
     qttermtcp =  prev.libsForQt5.callPackage ../pkgs/qttermtcp.nix {};
     sdrconnect = prev.callPackage ../pkgs/sdrconnect.nix {};
     sdrplay2 =  prev.callPackage ../pkgs/sdrplay2.nix {};
+    soapymiri = prev.callPackage ../pkgs/soapymiri.nix {};
     soapysdrplay2 = prev.callPackage ../pkgs/soapysdrplay2.nix {};
 }
