@@ -24,7 +24,9 @@
       outputsBuilder = channels: {
         packages = fup.lib.exportPackages { inherit (self.overlays) default; } channels;
 
-        devShells.default = import ./devShells (channels.nixpkgs);
+        devShells = {
+          sdrplay2 = import ./devShells/sdrplay2.nix channels.nixpkgs;
+        };
       };
     };
 }
