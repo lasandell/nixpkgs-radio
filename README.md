@@ -14,6 +14,7 @@ The following packages are currently provided for the `x86_64-linux` and `aarch6
 - `dump1090-sdrplay` - SDRplay fork of the popular ADS-B decoder
 - `dumphfdl` - Decoder for HFDL (HF ACARS)
 - `hamclock` - Ham radio dashboard
+- `kx2util` - Elecraft KX2 Utility
 - `libacars` - ACARS decoding library
 - `libax25-ve7fet` - VE7FET fork of libax25
 - `qttermtcp` - Packet radio client based on BPQTermTCP
