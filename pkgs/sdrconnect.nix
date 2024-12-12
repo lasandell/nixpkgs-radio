@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, alsaLib, autoPatchelfHook, copyDesktopItems, iconConvTools,
+{ lib, stdenv, fetchurl, alsa-lib, autoPatchelfHook, copyDesktopItems, iconConvTools,
   fontconfig, gcc, icu, libusb1, makeDesktopItem, util-linux, xorg }:
 
 let
@@ -32,7 +32,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ autoPatchelfHook copyDesktopItems iconConvTools ];
 
   buildInputs = [
-    alsaLib
+    alsa-lib
     fontconfig
     libusb1
     util-linux # for libuuid
