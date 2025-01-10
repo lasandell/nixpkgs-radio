@@ -6,11 +6,11 @@
 
 stdenv.mkDerivation rec {
   pname = "hamclock";
-  version = "4.10";
+  version = "4.0.12";
 
   src = fetchurl {
-    url = "https://clearskyinstitute.com/ham/HamClock/ESPHamClock-V${version}.tgz";
-    sha256 = "sha256-cerKtLUwTtpUxlcelcipX63G1P1U6yoQoRYKsURr3b8=";
+    url = "https://clearskyinstitute.com/ham/HamClock/ESPHamClock.tgz";
+    sha256 = "sha256-VEVzMXgdBQ9X8G7qC2etthJLaahmDFcY8P5NoWKV3Bw=";
   };
 
   sourceRoot = "ESPHamClock";
