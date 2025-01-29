@@ -2,16 +2,16 @@
   fontconfig, gcc, icu, libusb1, makeDesktopItem, util-linux, xorg }:
 
 let
-  date = "2024-11-01";
-  hash = "8d71cadca";
+  version = "1.0.3";
+  hash = "b6fce59a3";
   platforms = {
     aarch64-linux = {
       arch = "arm64";
-      sha256 = "sha256-QGgbyzmwS+2+2SUw8COuToHd1AIujHqZIzUw4HONAmY=";
+      sha256 = "sha256-jTVGhnAAFMS9YGqVnuXpebBgG+8oGjPI0S4YGBnZpkE=";
     };
     x86_64-linux = {
       arch = "x64";
-      sha256 = "sha256-Y3l9zcEs9izslL0BddCC8ZJa5p5hQ6Qes8R7dGO0EoA=";
+      sha256 = "sha256-HC0VDfGuw/FRdJhv5/Ui6piqBPNTb5QfzJjwmaeYuDU=";
     };
   };
 
@@ -22,7 +22,7 @@ with platforms.${system} or (throw "Unsupported system: ${system}");
 
 stdenv.mkDerivation rec {
   pname = "sdrconnect";
-  version = "unstable-${date}";
+  inherit version;
 
   src = fetchurl {
     url = "https://www.sdrplay.com/software/SDRconnect_linux-${arch}_${hash}.run";
