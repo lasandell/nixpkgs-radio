@@ -18,6 +18,7 @@ The following packages are currently provided for the `x86_64-linux` and `aarch6
 - `kx2util` - Elecraft KX2 Utility
 - `libacars` - ACARS decoding library
 - `libax25-ve7fet` - VE7FET fork of libax25
+- `qtsoundmodem` - Packet radio modem based on UZ7HO's SoundModem
 - `qttermtcp` - Packet radio client based on BPQTermTCP
 - `sdrconnect` - Cross-platform client for SDRplay 
 - `sdrplay2` - Legacy SDRplay library

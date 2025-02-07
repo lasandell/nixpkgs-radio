@@ -11,6 +11,7 @@ final: prev: {
     kx2util = prev.callPackage ../pkgs/kx2util.nix {};
     libacars =  prev.callPackage ../pkgs/libacars.nix {};
     libax25-ve7fet =  prev.callPackage ../pkgs/libax25-ve7fet.nix {};
+    qtsoundmodem =  prev.libsForQt5.callPackage ../pkgs/qtsoundmodem.nix {};
     qttermtcp =  prev.libsForQt5.callPackage ../pkgs/qttermtcp.nix {};
     sdrconnect = prev.callPackage ../pkgs/sdrconnect.nix {};
     sdrplay2 =  prev.callPackage ../pkgs/sdrplay2.nix {};
