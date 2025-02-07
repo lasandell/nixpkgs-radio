@@ -2,7 +2,7 @@
   makeDesktopItem, qmake, qtmultimedia, qtserialport, qtbase, wrapQtAppsHook }:
 
 let
-  rev = "0.73";
+  rev = "0.78";
 in
 stdenv.mkDerivation rec {
   pname = "qttermtcp";
@@ -11,9 +11,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "g8bpq";
     repo = "QtTermTCP";
-    hash = "sha256-TF6qc7bN9dVlef+wRyF8Y1ox16bViZLNjgNRqeJCnds=";
-    # 0.73 tag points to 0.0.0.71 commit, so we use the hash instead
-    rev = "e1ed8e1fb27378046f3ab390ef07b87a26cb6ced"; # inherit rev;
+    hash = "sha256-Zyb6vakBU8AHbjx5tHMRBgSDTTqYzYpGtD+cYdSgHrI=";
+    inherit rev;
   };
 
   nativeBuildInputs = [ copyDesktopItems iconConvTools qmake wrapQtAppsHook ];
@@ -54,11 +53,7 @@ stdenv.mkDerivation rec {
   ];
 
   meta = with lib; {
-    description = "AX.25 packet radio client based on BPQTermTCP";
-    longDescription = ''
-      Binary is wrapped to set the working directory to ~/.config/QTermTCP
-      so that it writes its config files there.
-    '';
+    description = "Packet radio terminal based on BPQTermTCP";
     homepage = "https://www.cantab.net/users/john.wiseman/Documents/QtTermTCP.html";
     license = licenses.unfree;
     platforms = platforms.linux;

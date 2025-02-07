@@ -19,7 +19,7 @@ The following packages are currently provided for the `x86_64-linux` and `aarch6
 - `libacars` - ACARS decoding library
 - `libax25-ve7fet` - VE7FET fork of libax25
 - `qtsoundmodem` - Packet radio modem based on UZ7HO's SoundModem
-- `qttermtcp` - Packet radio client based on BPQTermTCP
+- `qttermtcp` - Packet radio terminal based on BPQTermTCP
 - `sdrconnect` - Cross-platform client for SDRplay 
 - `sdrplay2` - Legacy SDRplay library
 - `soaprsdrplay2` - Legacy SDRplay plugin for SoapySDR
