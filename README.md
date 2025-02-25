@@ -24,6 +24,7 @@ The following packages are currently provided for the `x86_64-linux` and `aarch6
 - `sdrconnect` - Cross-platform client for SDRplay 
 - `sdrplay2` - Legacy SDRplay library
 - `soaprsdrplay2` - Legacy SDRplay plugin for SoapySDR
+- `xrouter` - Packet radio router
 
 ## Overlays
 

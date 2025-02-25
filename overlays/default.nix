@@ -17,4 +17,5 @@ final: prev: {
     sdrconnect = prev.callPackage ../pkgs/sdrconnect.nix {};
     sdrplay2 =  prev.callPackage ../pkgs/sdrplay2.nix {};
     soapysdrplay2 = prev.callPackage ../pkgs/soapysdrplay2.nix {};
+    xrouter = prev.callPackage ../pkgs/xrouter.nix {};
 }
