@@ -6,11 +6,11 @@
 
 stdenv.mkDerivation rec {
   pname = "hamclock";
-  version = "4.0.12";
+  version = "4.20";
 
   src = fetchurl {
-    url = "https://clearskyinstitute.com/ham/HamClock/ESPHamClock.tgz";
-    sha256 = "sha256-VEVzMXgdBQ9X8G7qC2etthJLaahmDFcY8P5NoWKV3Bw=";
+    url = "https://clearskyinstitute.com/ham/HamClock/ESPHamClock-V${version}.tgz";
+    sha256 = "sha256-pGcORStkcukWoPsTQ6jGGZjYQgKH+9QEclzYNX9M6e4=";
   };
 
   sourceRoot = "ESPHamClock";
@@ -24,9 +24,12 @@ stdenv.mkDerivation rec {
     for resolution in ${lib.concatStringsSep " " extraResolutions}; do
       make -j $NIX_BUILD_CORES hamclock-$resolution
       cp hamclock-$resolution $out/bin
+      make -j $NIX_BUILD_CORES clean
+
       for variant in ${lib.concatStringsSep " " extraVariants}; do
         make -j $NIX_BUILD_CORES hamclock-$variant-$resolution
         cp hamclock-$variant-$resolution $out/bin
+        make -j $NIX_BUILD_CORES clean
       done
     done
     
