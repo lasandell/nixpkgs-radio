@@ -4,11 +4,11 @@
 
 stdenv.mkDerivation rec {
   pname = "kh1util";
-  version = "1.24.6.2";
+  version = "1.25.6.16";
 
   src = fetchurl {
-    url = "https://ftp.elecraft.com/KH1/Utilities/KH1UtilityLINUX64BIT_1_24_6_2.tar.gz";
-    hash = "sha256-oz3JaeDhynaCYX/wX93ix6lSTYcFkKYu+CfHQwt+GQA=";
+    url = "https://ftp.elecraft.com/KH1/Utilities/KH1UtilityLINUX64BIT_1_25_6_16.tar.gz";
+    hash = "sha256-oEjTY00Fj2/hQ3LWR3Yd+GGgP3fZ2qDnOeffDXo62ic=";
   };
 
   nativeBuildInputs = [ autoPatchelfHook copyDesktopItems iconConvTools makeWrapper ];
