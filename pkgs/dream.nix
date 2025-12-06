@@ -1,5 +1,5 @@
 { stdenv, lib, fetchsvn, copyDesktopItems, fdk_aac, fftw, hamlib, libopus, libpcap,
-  libsndfile, makeDesktopItem, pkg-config, pulseaudio, qmake, qtbase, qtwebengine,
+  libsndfile, makeDesktopItem, pkg-config, pulseaudio, qmake, qtbase,
   qwt6_1, speexdsp, makeWrapper, wrapQtAppsHook }:
 
 stdenv.mkDerivation rec {
@@ -16,7 +16,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     fdk_aac fftw hamlib libopus libpcap libsndfile pulseaudio qtbase
-    qtwebengine qwt6_1 speexdsp
+    qwt6_1 speexdsp
   ];
 
   postPatch = ''
@@ -37,7 +37,6 @@ stdenv.mkDerivation rec {
     "CONFIG+=speexdsp"
     "INCLUDEPATH+=${qwt6_1}/include"
     "LIBS+=-lqwt"
-    "QT+=webenginewidgets"
   ];
 
   postInstall = ''
