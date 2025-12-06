@@ -18,8 +18,6 @@ stdenv.mkDerivation rec {
   postPatch = ''
     substituteInPlace Makefile \
       --replace-fail 'PKG_CONFIG_PATH=' '#PKG_CONFIG_PATH='
-    substituteInPlace net_io.c \
-      --replace-fail 'calloc(sizeof(*service), 1)' 'calloc(1, sizeof(*service))'
   '';
 
   buildFlags = ["PREFIX=${placeholder "out"}"];
@@ -32,6 +30,10 @@ stdenv.mkDerivation rec {
     cp -v view1090 $out/bin/view1090-sdrplay
     cp -vr public_html $out/share/dump1090
   '';
+
+  NIX_CFLAGS_COMPILE = [
+    "-Wno-error=calloc-transposed-args"
+  ];
 
   meta = with lib; {
     description = "ADS-B Ground Station System Decoder";
