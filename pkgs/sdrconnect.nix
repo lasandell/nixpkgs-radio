@@ -2,16 +2,16 @@
   fontconfig, gcc, icu, libusb1, makeDesktopItem, util-linux, xorg }:
 
 let
-  version = "1.0.4";
-  hash = "83273bcd8";
+  version = "1.0.5";
+  hash = "583e89db6";
   platforms = {
     aarch64-linux = {
       arch = "arm64";
-      sha256 = "sha256-PiKSbc+7hfJ+GkLlM2jWeUuD++3hFHB/pP7fBTmEMj0=";
+      sha256 = "sha256-Mt5ommnqxko9iC+lRRKBB7v9+DCaSGFIU/vIdmynyGk=";
     };
     x86_64-linux = {
       arch = "x64";
-      sha256 = "sha256-gelLMfbNhpnFGqP1dCzkLdTz28lM6dctJcbopYUdtmQ=";
+      sha256 = "sha256-7cMS+Igm/nLr6mNHmaP/wiFM4M2GCGL9feko4uSVBF4=";
     };
   };
 
