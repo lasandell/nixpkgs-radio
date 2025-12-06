@@ -16,6 +16,8 @@ stdenv.mkDerivation rec {
   buildInputs = [ sdrplay2 soapysdr ];
 
   postPatch = ''
+    substituteInPlace CMakeLists.txt \
+      --replace-fail "cmake_minimum_required(VERSION 2.8.7)" "cmake_minimum_required(VERSION 3.10)"  
     substituteInPlace Registration.cpp \
       --replace-fail \"sdrplay \"sdrplay2 \
       --replace-fail \"SDRplay \"SDRplay2
