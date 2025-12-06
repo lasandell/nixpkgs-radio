@@ -8,7 +8,6 @@ final: prev: {
     hamclock = prev.callPackage ../pkgs/hamclock.nix {};
     kh1util = prev.callPackage ../pkgs/kh1util.nix {};
     kx2util = prev.callPackage ../pkgs/kx2util.nix {};
-    libacars =  prev.callPackage ../pkgs/libacars.nix {};
     libax25-ve7fet =  prev.callPackage ../pkgs/libax25-ve7fet.nix {};
     linbpq =  prev.callPackage ../pkgs/linbpq.nix {};
     qtsoundmodem =  prev.libsForQt5.callPackage ../pkgs/qtsoundmodem.nix {};

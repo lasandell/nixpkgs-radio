@@ -15,7 +15,6 @@ The following packages are currently provided for the `x86_64-linux` and `aarch6
 - `hamclock` - Ham radio dashboard
 - `kh1util` - Elecraft KH1 Utility
 - `kx2util` - Elecraft KX2 Utility
-- `libacars` - ACARS decoding library
 - `libax25-ve7fet` - VE7FET fork of libax25
 - `linbpq` - Packet radio node based on BPQ32
 - `qtsoundmodem` - Packet radio modem based on UZ7HO's SoundModem
