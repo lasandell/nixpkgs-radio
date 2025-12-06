@@ -2,18 +2,15 @@
   makeWrapper, makeDesktopItem, alsa-lib, fftwFloat, pulseaudio, qmake,
   qtmultimedia, qtserialport, qtbase, wrapQtAppsHook }:
 
-let
-  rev = "0.73";
-in
 stdenv.mkDerivation rec {
   pname = "qtsoundmodem";
-  version = "0.0.${rev}";
+  version = "0.0.${src.rev}";
 
   src = fetchFromGitHub {
     owner = "g8bpq";
     repo = "QtSoundModem";
-    hash = "sha256-pflPC0VIKrEu6D5wzBHLQYkNFaIpi8HuIfWoOgZLwgo=";
-    inherit rev;
+    hash = "sha256-GnAWhUEoAgoO8tPX1POcoEtiaBIKmm/Uwn5raCGGqdQ=";
+    rev = "0.76";
   };
 
   nativeBuildInputs = [ autoPatchelfHook copyDesktopItems icoutils qmake wrapQtAppsHook ];
