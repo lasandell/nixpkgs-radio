@@ -18,9 +18,14 @@ stdenv.mkDerivation rec {
   buildInputs = [ libax25 ncurses ];
 
   postPatch = ''
-    substituteInPlace pathnames.h --replace 'AX25_SYSCONFDIR"' '"/etc/ax25/'
-    substituteInPlace pathnames.h --replace 'AX25_LOCALSTATEDIR"' '"/var/ax25/'
+    substituteInPlace pathnames.h \
+      --replace-fail 'AX25_SYSCONFDIR"' '"/etc/ax25/' \
+      --replace-fail 'AX25_LOCALSTATEDIR"' '"/var/ax25/'
   '';
+
+  NIX_CFLAGS_COMPILE = [
+    "-Wno-error=implicit-function-declaration"
+  ];
 
   meta = with lib; {
     description = "AX.25 ham radio applications (ve7fet fork)";

@@ -18,8 +18,9 @@ stdenv.mkDerivation rec {
   buildInputs = [ libax25-ve7fet zlib ];
 
   postPatch = ''
-    substituteInPlace pathnames.h --replace 'AX25_SYSCONFDIR"' '"/etc/ax25/'
-    substituteInPlace pathnames.h --replace 'AX25_LOCALSTATEDIR"' '"/var/ax25/'
+    substituteInPlace pathnames.h \
+      --replace-fail 'AX25_SYSCONFDIR"' '"/etc/ax25/' \
+      --replace-fail 'AX25_LOCALSTATEDIR"' '"/var/ax25/'
   '';
 
   meta = with lib; {
