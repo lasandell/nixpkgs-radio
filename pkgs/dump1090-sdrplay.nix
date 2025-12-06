@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, pkg-config, librtlsdr, sdrplay }:
+{ lib, stdenv, fetchFromGitHub, pkg-config, rtl-sdr, sdrplay }:
 
 stdenv.mkDerivation rec {
   pname = "dump1090-sdrplay";
@@ -13,11 +13,13 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [ librtlsdr sdrplay ];
+  buildInputs = [ rtl-sdr sdrplay ];
 
   postPatch = ''
-    substituteInPlace Makefile --replace-fail \
-     'PKG_CONFIG_PATH=' '#PKG_CONFIG_PATH='
+    substituteInPlace Makefile \
+      --replace-fail 'PKG_CONFIG_PATH=' '#PKG_CONFIG_PATH='
+    substituteInPlace net_io.c \
+      --replace-fail 'calloc(sizeof(*service), 1)' 'calloc(1, sizeof(*service))'
   '';
 
   buildFlags = ["PREFIX=${placeholder "out"}"];
