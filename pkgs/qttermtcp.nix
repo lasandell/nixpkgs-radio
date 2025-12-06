@@ -1,18 +1,18 @@
 { lib, stdenv, fetchFromGitHub, copyDesktopItems, iconConvTools, makeWrapper,
   makeDesktopItem, qmake, qtmultimedia, qtserialport, qtbase, wrapQtAppsHook }:
 
-let
-  rev = "0.78";
-in
 stdenv.mkDerivation rec {
   pname = "qttermtcp";
-  version = "0.0.${rev}";
+  version = "0.0.0.79";
+  # version = "0.0.${rev}"
 
   src = fetchFromGitHub {
     owner = "g8bpq";
     repo = "QtTermTCP";
-    hash = "sha256-Zyb6vakBU8AHbjx5tHMRBgSDTTqYzYpGtD+cYdSgHrI=";
-    inherit rev;
+    hash = "sha256-+kCbqUfSBhEu8VSeYEEHLAMKTBhpBQlJB+12iuz+VEM=";
+    # Use commit hash due to 0.79 tag with 0.0.0.78 version
+    rev = "a5e1b1389cbd9b3718b9ae41277f90633154cf47";
+    # rev = "0.79";
   };
 
   nativeBuildInputs = [ copyDesktopItems iconConvTools qmake wrapQtAppsHook ];
