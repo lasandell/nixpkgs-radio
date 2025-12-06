@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "acarsdec";
-  version = "unstable-2023-04-08";
+  version = "4.4";
 
   src = fetchFromGitHub {
-    owner = "TLeconte";
+    owner = "f00b4r0";
     repo = "acarsdec";
-    rev = "7920079b8e005c6c798bd478a513211daf9bbd25";
-    hash = "sha256-SE8amDCtyJlqMMoGOoT80t3Ponws1VDTt/e7HpDdmXI=";
+    rev = "v${version}";
+    hash = "sha256-ZIkUQVb8SlKDKtMrQg2jOlGupfVPLA+hbeJ/qvI2vEk=";
   };
 
   nativeBuildInputs = [ cmake pkg-config ];
@@ -19,7 +19,7 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "ACARS SDR decoder";
-    homepage = https://github.com/TLeconte/acarsdec;
+    homepage = "https://github.com/f00b4r0/acarsdec/";
     license = licenses.gpl2;
     platforms = platforms.linux;
     mainProgram = "acarsdec";
