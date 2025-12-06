@@ -5,7 +5,6 @@ final: prev: {
     cqrprop = prev.callPackage ../pkgs/cqrprop.nix {};
     dream = prev.libsForQt5.callPackage ../pkgs/dream.nix {};
     dump1090-sdrplay = prev.callPackage ../pkgs/dump1090-sdrplay.nix {};
-    dumphfdl = prev.callPackage ../pkgs/dumphfdl.nix {};
     hamclock = prev.callPackage ../pkgs/hamclock.nix {};
     kh1util = prev.callPackage ../pkgs/kh1util.nix {};
     kx2util = prev.callPackage ../pkgs/kx2util.nix {};

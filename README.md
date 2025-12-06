@@ -12,7 +12,6 @@ The following packages are currently provided for the `x86_64-linux` and `aarch6
 - `cqrprop` - Desktop ham propagation info widget
 - `dream` - Digital Radio Modiale decoder
 - `dump1090-sdrplay` - SDRplay fork of the popular ADS-B decoder
-- `dumphfdl` - Decoder for HFDL (HF ACARS)
 - `hamclock` - Ham radio dashboard
 - `kh1util` - Elecraft KH1 Utility
 - `kx2util` - Elecraft KX2 Utility
