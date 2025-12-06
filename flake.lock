@@ -2,11 +2,11 @@
   "nodes": {
     "flake-compat": {
       "locked": {
-        "lastModified": 1696426674,
-        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "lastModified": 1764712249,
+        "narHash": "sha256-DhsrZsMebdvpjZC2EzPsqiLGI84tD7kZz7zc6tTCmqg=",
         "owner": "edolstra",
         "repo": "flake-compat",
-        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "rev": "3b279e4317ccfa4865356387935310531357d919",
         "type": "github"
       },
       "original": {
@@ -38,11 +38,11 @@
         "flake-utils": "flake-utils"
       },
       "locked": {
-        "lastModified": 1696331477,
-        "narHash": "sha256-YkbRa/1wQWdWkVJ01JvV+75KIdM37UErqKgTf0L54Fk=",
+        "lastModified": 1738591040,
+        "narHash": "sha256-4WNeriUToshQ/L5J+dTSWC5OJIwT39SEP7V7oylndi8=",
         "owner": "gytis-ivaskevicius",
         "repo": "flake-utils-plus",
-        "rev": "bfc53579db89de750b25b0c5e7af299e0c06d7d3",
+        "rev": "afcb15b845e74ac5e998358709b2b5fe42a948d1",
         "type": "github"
       },
       "original": {
@@ -53,16 +53,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1736539954,
-        "narHash": "sha256-MOQcWp6dXLLaiUs8WfGpxtCxsWbm36GKdLmQwFYjfZs=",
+        "lastModified": 1765046100,
+        "narHash": "sha256-kwAdsD9RJOBaXKg3kVZfhNhscrUQYFufVQ42qA3mcqw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "202c851cddd45732751acf5a9c5bbd7ed6de4b26",
+        "rev": "96938e73cf961b1812710410e31b6b37362176b6",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "release-24.11",
+        "ref": "release-25.11",
         "repo": "nixpkgs",
         "type": "github"
       }
