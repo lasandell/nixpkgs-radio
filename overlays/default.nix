@@ -10,6 +10,7 @@ final: prev: {
   kx2util = prev.callPackage ../pkgs/kx2util.nix {};
   libax25-ve7fet = prev.callPackage ../pkgs/libax25-ve7fet.nix {};
   linbpq = prev.callPackage ../pkgs/linbpq.nix {};
+  meshtastic-sniffer = prev.callPackage ../pkgs/meshtastic-sniffer.nix {};
   qtsoundmodem = prev.libsForQt5.callPackage ../pkgs/qtsoundmodem.nix {};
   qttermtcp = prev.libsForQt5.callPackage ../pkgs/qttermtcp.nix {};
   sdrconnect = prev.callPackage ../pkgs/sdrconnect.nix {};
