@@ -18,7 +18,6 @@
 
       nixosModules = {
         sdrplay = import ./nixosModules/sdrplay.nix;
-        sdrplay2 = import ./nixosModules/sdrplay2.nix;
       };
 
       outputsBuilder = channels: {
