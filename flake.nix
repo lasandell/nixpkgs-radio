@@ -4,7 +4,7 @@
     fup.url = "github:gytis-ivaskevicius/flake-utils-plus";
     flake-compat.url = "github:edolstra/flake-compat";
   };
-  outputs = { self, fup, nixpkgs, ... }@inputs:
+  outputs = { self, fup, ... }@inputs:
     fup.lib.mkFlake {
       inherit self inputs;
 
@@ -14,10 +14,7 @@
 
       sharedOverlays = [ self.overlays.default ];
 
-      overlays.default = import ./lib/pinOverlay.nix {
-        inherit nixpkgs;
-        overlay = import ./overlays;
-      };
+      overlays.default = import ./overlays;
 
       nixosModules = {
         sdrplay = import ./nixosModules/sdrplay.nix;
