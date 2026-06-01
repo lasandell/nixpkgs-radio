@@ -1,5 +1,5 @@
 { stdenv, lib, fetchFromGitHub, atk, autoPatchelfHook, cairo, fpc,
-  gdk-pixbuf, glib, gtk2, lazarus, openssl, pango, patchelf, xorg }:
+  gdk-pixbuf, glib, gtk2, lazarus, libX11, openssl, pango, patchelf }:
 
 stdenv.mkDerivation rec {
   pname = "cqrprop";
@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ autoPatchelfHook fpc lazarus ];
 
-  buildInputs = [ atk cairo gdk-pixbuf glib gtk2 pango xorg.libX11 ];
+  buildInputs = [ atk cairo gdk-pixbuf glib gtk2 pango libX11 ];
 
   runtimeDependencies = [ openssl.out ];
 

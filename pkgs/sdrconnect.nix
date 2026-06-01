@@ -1,5 +1,5 @@
 { lib, stdenv, fetchurl, alsa-lib, autoPatchelfHook, copyDesktopItems, iconConvTools,
-  fontconfig, gcc, icu, libusb1, makeDesktopItem, util-linux, xorg }:
+  fontconfig, gcc, icu, libICE, libSM, libusb1, libX11, makeDesktopItem, util-linux }:
 
 let
   version = "1.0.5";
@@ -41,9 +41,9 @@ stdenv.mkDerivation rec {
 
   runtimeDependencies = [
     icu
-    xorg.libX11
-    xorg.libICE
-    xorg.libSM
+    libX11
+    libICE
+    libSM
   ];
 
   appendRunpaths = [ "${placeholder "out"}/lib" ];

@@ -1,6 +1,6 @@
 { lib, stdenv, fetchurl, atk, autoPatchelfHook, cairo,
   gdk-pixbuf, glib, gtk2, copyDesktopItems, iconConvTools,
-  fontconfig, gcc, makeDesktopItem, makeWrapper, pango, webkitgtk_4_1, xorg }:
+  fontconfig, gcc, makeDesktopItem, makeWrapper, libX11, pango, webkitgtk_4_1 }:
 
 stdenv.mkDerivation rec {
   pname = "kx2util";
@@ -13,7 +13,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ autoPatchelfHook copyDesktopItems iconConvTools makeWrapper ];
 
-  buildInputs = [ atk cairo fontconfig gdk-pixbuf glib gtk2 pango webkitgtk_4_1 xorg.libX11 ];
+  buildInputs = [ atk cairo fontconfig gdk-pixbuf glib gtk2 libX11 pango webkitgtk_4_1 ];
 
   appendRunpaths = [ "${placeholder "out"}/lib" ];
 

@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchurl, copyDesktopItems, makeDesktopItem, xorg,
+{ stdenv, lib, fetchurl, copyDesktopItems, makeDesktopItem, libX11,
   extraVariants ? [ "web" "fb0" ],
   extraResolutions ? [ "800x480" "1600x960" "2400x1440" "3200x1920" ],
   defaultResolution ? builtins.head extraResolutions
@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ copyDesktopItems ];
 
-  buildInputs = [ xorg.libX11 ];
+  buildInputs = [ libX11 ];
 
   postInstall = ''
     mkdir -p $out/bin
